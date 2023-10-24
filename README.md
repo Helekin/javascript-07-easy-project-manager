@@ -9,11 +9,11 @@ This repository contains a comprehensive exercise set covering section 12 of the
 
 ### Prerequisites
 
-- Use any code editor
+- You can use any code editor for this project.
 
 ### Installation
 
-1. Clone the repo
+1. Clone the repository:
 
 ```sh
 git clone https://github.com/Helekin/javascript-07-easy-project-manager.git
