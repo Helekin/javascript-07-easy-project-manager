@@ -12,22 +12,57 @@ class DOMHelper {
   }
 }
 
-class Tooltip {
+class Component {
+  constructor(hostElementId, insertBefore = false) {
+    if (hostElementId) {
+      this.hostElement = document.getElementById(hostElementId);
+    } else {
+      this.hostElement = document.body;
+    }
+
+    this.insertBefore = insertBefore;
+  }
+
   detach() {
-    this.element.remove();
+    if (this.element) {
+      this.element.remove();
+    }
   }
 
   attach() {
+    this.hostElement.insertAdjacentElement(
+      this.insertBefore ? "afterbegin" : "beforeend",
+      this.element
+    );
+  }
+}
+
+class Tooltip extends Component {
+  constructor(closeNotifierFunction) {
+    super();
+    this.closeNotifier = closeNotifierFunction;
+    this.create();
+  }
+
+  closeTooltip = () => {
+    this.detach();
+    this.closeNotifier();
+  };
+
+  create() {
     const tooltipElement = document.createElement("div");
+
     tooltipElement.className = "card";
     tooltipElement.textContent = "DUMMY!";
-    tooltipElement.addEventListener("click", this.detach.bind(this.detach));
+    tooltipElement.addEventListener("click", this.closeTooltip);
+
     this.element = tooltipElement;
-    document.body.append(tooltipElement);
   }
 }
 
 class ProjectItem {
+  hasActiveToolTip = false;
+
   constructor(id, updateProjectListsFunction, type) {
     this.id = id;
     this.updateProjectListsHandler = updateProjectListsFunction;
@@ -36,8 +71,16 @@ class ProjectItem {
   }
 
   showMoreInfoHandler() {
-    const tooltip = new Tooltip();
+    if (this.hasActiveToolTip) {
+      return;
+    }
+
+    const tooltip = new Tooltip(() => {
+      this.hasActiveToolTip = false;
+    });
+
     tooltip.attach();
+    this.hasActiveToolTip = true;
   }
 
   connectMoreInfoButton() {
