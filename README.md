@@ -1,6 +1,6 @@
 ## About The Project
 
-This repository contains a comprehensive exercise set covering sections 12 to 13 of the Udemy course, "JavaScript - The Complete Guide 2023 (Beginner + Advanced)" instructed by Maximilian Schwarzmüller. The content includes advanced topics such as Advanced Classes, Advanced Object-Oriented Programming, Advanced DOM Handling in JavaScript and is up-to-date as of July 2023.
+This repository contains a comprehensive exercise set covering sections 12 to 14 of the Udemy course, "JavaScript - The Complete Guide 2023 (Beginner + Advanced)" instructed by Maximilian Schwarzmüller. The content includes advanced topics such as Advanced Classes, Advanced Object-Oriented Programming, Advanced DOM Handling with Advanced Events in JavaScript and is up-to-date as of July 2023.
 
 - [Udemy Instructor](https://www.udemy.com/user/maximilian-schwarzmuller/)
 - [Udemy Course](https://www.udemy.com/course/javascript-the-complete-guide-2020-beginner-advanced/)
